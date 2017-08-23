@@ -27,8 +27,14 @@ app.use(session({
 app.get('/',function(req, res){
   let word = words[Math.floor(Math.random() * words.length)];
   // TODO: can I get spread to create an array or one letter strings?
-  console.log(word.spread);
-  console.log("^^word.spread");
+  req.session.word = word;
+  console.clear();
+  console.log(req.session.word);
+  console.log("^^word");
+  let letters = [];
+  letters = word.split('');
+  console.log(letters);
+  console.log("^^letters");
   res.render('index', {word : word});
 });
 
