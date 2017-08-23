@@ -34,8 +34,12 @@ app.get('/',function(req, res){
   let letters = [];
   letters = word.split('');
   console.log(letters);
-  console.log("^^letters");
-  res.render('index', {word : word});
+  console.log("^^letters, vv word again");
+  console.log(word);
+  res.render('index',
+      {letters : letters,
+      word : word}
+  );
 });
 
 app.listen(app.get('port'), function(){

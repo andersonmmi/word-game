@@ -5,11 +5,12 @@ h1{
   text-align: center;
 }
 .play_board{
+  display: flex;
+  flex-direction: row;
   color: white;
   font-size: 5vh;
-  text-decoration: none;
-  text-align: center;
   padding: 10vh;
+  justify-content: center;
 }
 body{
   background-color: violet;
@@ -20,4 +21,13 @@ video{
   top: 0vh;
   left: 0vw;
   z-index: -100;
+}
+.riddle{
+  width: 3vw;
+  border-bottom: 5px solid white;
+  margin: 10px;
+}
+.letter{
+  text-align: center;
+  visibility: hidden;
 }

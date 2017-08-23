@@ -8,13 +8,17 @@
   <body>
     <h1>This is the word game!!!</h1>
     <div class="play_board">
-      This is the {{word}}!!!
-      <video loop muted autoplay class="video">
-        <source src="http://www.piedpiper.com/app/themes/pied-piper/dist/images/video-bg.mp4" type="video/mp4" />
-        <div class="play_board">
-          This is the {{word}}!!!
+      {{#letters}}
+      <span class="riddle">
+        <div class="letter">
+          {{.}}
         </div>
-      </video>
+      </span>
+      {{/letters}}({{word}})
+    </div>
+    <video loop muted autoplay class="video">
+      <source src="http://www.piedpiper.com/app/themes/pied-piper/dist/images/video-bg.mp4" type="video/mp4" />
+    </video>
 
   </body>
 </html>
