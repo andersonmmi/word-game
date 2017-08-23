@@ -11,6 +11,7 @@ app.set('views','./views');
 
 app.use(parser.json());
 app.use(parser.urlencoded({extended : false}));
+app.use(express.static(__dirname+'/public'));
 
 // TODO: session does not create a unique ID yet
 app.use(session({
