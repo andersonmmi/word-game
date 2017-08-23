@@ -14,6 +14,9 @@ h1{
 }
 body{
   background-color: violet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 video{
   height: 100vh;
@@ -30,4 +33,11 @@ video{
 .letter{
   text-align: center;
   visibility: hidden;
+}
+form{
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  align-content: center;
+  justify-content: center;
 }

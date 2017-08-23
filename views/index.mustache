@@ -7,6 +7,9 @@
   </head>
   <body>
     <h1>This is the word game!!!</h1>
+    <video loop muted autoplay class="video">
+      <source src="http://www.piedpiper.com/app/themes/pied-piper/dist/images/video-bg.mp4" type="video/mp4" />
+    </video>
     <div class="play_board">
       {{#letters}}
       <span class="riddle">
@@ -16,9 +19,9 @@
       </span>
       {{/letters}}({{word}})
     </div>
-    <video loop muted autoplay class="video">
-      <source src="http://www.piedpiper.com/app/themes/pied-piper/dist/images/video-bg.mp4" type="video/mp4" />
-    </video>
-
+      <form class="guess" action="/" method="post">
+        <input type="text" name="guess" value="" maxlength="1">
+        <button type="submit" name="guess">Guess</button>
+      </form>
   </body>
 </html>

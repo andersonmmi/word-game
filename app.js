@@ -29,18 +29,20 @@ app.get('/',function(req, res){
   // TODO: can I get spread to create an array or one letter strings?
   req.session.word = word;
   console.clear();
-  console.log(req.session.word);
-  console.log("^^word");
   let letters = [];
   letters = word.split('');
-  console.log(letters);
-  console.log("^^letters, vv word again");
-  console.log(word);
+  req.session.letters = letters;
+  console.log(req.session.word);
+  console.log("^^ req.session.word");
+  console.log(req.session.letters);
+  console.log("^^ req.session.letters");
   res.render('index',
       {letters : letters,
       word : word}
   );
 });
+
+// TODO: create app.post that pushes letters from guess form
 
 app.listen(app.get('port'), function(){
   console.log('listening on 3000');
