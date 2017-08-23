@@ -41,3 +41,11 @@ form{
   align-content: center;
   justify-content: center;
 }
+.trash_can{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-size: 5vh;
+  padding: 10vh;
+  justify-content: center;
+}

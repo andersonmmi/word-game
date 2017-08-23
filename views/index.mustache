@@ -19,9 +19,18 @@
       </span>
       {{/letters}}({{word}})
     </div>
-      <form class="guess" action="/" method="post">
-        <input type="text" name="guess" value="" maxlength="1">
-        <button type="submit" name="guess">Guess</button>
-      </form>
+    <form class="guess" action="/" method="post">
+      <input type="text" name="guess" value="" maxlength="1">
+      <button type="submit" name="guess">Guess</button>
+    </form>
+    <div class="trash_can">
+      {{#guesses}}
+      <span class="guessed_letters">
+        <div class="guessed_letter">
+          {{.}}
+        </div>
+      </span>
+      {{/guesses}}
+    </div>
   </body>
 </html>
