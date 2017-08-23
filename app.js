@@ -50,6 +50,8 @@ app.post('/',function(req,res,next){
   guesses.push(req.body.guess);
   console.log(req.body.guess);
   res.render('index',{
+    letters : letters,
+    word : secretWord,
     guesses : guesses
   });
   next();
