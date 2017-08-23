@@ -1,5 +1,23 @@
-*{
-  color: blue;
-  text-decoration: underline;
+h1{
+  color: white;
+  font-size: 8.5vh;
+  font-family: fantasy;
+  text-align: center;
+}
+.play_board{
+  color: white;
+  font-size: 5vh;
+  text-decoration: none;
+  text-align: center;
+  padding: 10vh;
+}
+body{
   background-color: violet;
+}
+video{
+  height: 100vh;
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  z-index: -100;
 }

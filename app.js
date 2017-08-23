@@ -3,6 +3,9 @@ const app = express();
 const mustache = require('mustache-express');
 const parser = require('body-parser');
 const session = require('express-session');
+const fs = require('fs');
+const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
+
 
 app.set('port', process.env.PORT || 3000);
 app.engine('mustache',mustache());
@@ -22,7 +25,11 @@ app.use(session({
 );
 
 app.get('/',function(req, res){
-  res.render('index');
+  let word = words[Math.floor(Math.random() * words.length)];
+  // TODO: can I get spread to create an array or one letter strings?
+  console.log(word.spread);
+  console.log("^^word.spread");
+  res.render('index', {word : word});
 });
 
 app.listen(app.get('port'), function(){
