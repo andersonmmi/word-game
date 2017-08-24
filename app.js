@@ -50,7 +50,9 @@ app.get('/',function(req, res){
 app.post('/',function(req,res,next){
   guesses.push(req.body.guess);
   console.log(req.body.guess);
-  req.session.guesses.push(req.body.guess);
+  console.log("^^ req.body.guess");
+  // done: push strings to session.guesses, not arrays (time spent 45 min smh)
+  req.session.guesses.push(req.body.guess[0][0]);
   console.log(req.session.guesses);
   console.log("^^ req.session.guesses");
   res.render('index',{
