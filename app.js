@@ -49,14 +49,17 @@ app.get('/',function(req, res){
 // done: create app.post that pushes letters from guess form
 app.post('/',function(req,res,next){
   guesses.push(req.body.guess);
-  console.log(req.body.guess);
-  console.log("^^ req.body.guess");
+  console.log(req.body.guess[0][0]);
+  console.log("^^ req.body.guess[0][0]");
   // done: push strings to session.guesses, not arrays (time spent 45 min smh)
   req.session.guesses.push(req.body.guess[0][0]);
   console.log(req.session.guesses);
   console.log("^^ req.session.guesses");
   // done: log "success" if session.letters contains body.guess
   req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
+  // TODO: if success, show letter; else end
+  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
+  //render page anew
   res.render('index',{
     letters : letters,
     word : secretWord,

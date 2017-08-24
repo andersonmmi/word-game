@@ -33,7 +33,7 @@ video{
 }
 .letter{
   text-align: center;
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 form{
   display: flex;

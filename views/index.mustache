@@ -13,9 +13,11 @@
     <div class="play_board">
       {{#letters}}
       <span class="riddle">
-        <div class="letter">
-          {{.}}
-        </div>
+        <!-- TODO: begin conditional mustaching for "isMatch" and "isNotMatch" -->
+        <div class="letter"></div>
+
+        <div class="match"></div>
+
       </span>
       {{/letters}}({{word}})
     </div>
