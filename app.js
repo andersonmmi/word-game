@@ -8,14 +8,15 @@ const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().sp
 let guesses = [];
 let letters = [];
 let solution = [];
+let extraSolutionArray = [];
 // done: create eachLetter class with "match" constructor so that new letter objects can be created and pushed to solution array
-let letter = class letter {
-  constructor(match) {
-    this.match = match;
+let myObj = class Object {
+  constructor(letter) {
+    this.letter = letter;
   }
 }
 let secretWord = '';
-const data = require('./data.js')
+const data = require('./data.js');
 
 app.set('port', process.env.PORT || 3000);
 app.engine('mustache',mustache());
@@ -34,13 +35,15 @@ app.use(session({
   })
 );
 
+
 app.get('/',function(req, res){
   let word = words[Math.floor(Math.random() * words.length)];
   // done: used .split to create an array of one letter strings
   req.session.word = word;
   console.clear();
   letters = word.split('');
-  solution = letters;
+  solution = word.split('');
+  extraSolutionArray = word.split('')
   req.session.letters = letters;
   req.session.solution = solution;
   console.log(req.session.word);
@@ -48,11 +51,16 @@ app.get('/',function(req, res){
   console.log(req.session.letters);
   console.log("^^ req.session.letters");
   req.session.guesses = [];
-  secretWord = word;
-  solution = letters.map(()=> new letter('a'));
+  function createObjectList(){
+      letters.push("-");
+      return new myObj(letters.shift());
+  }
+  solution = letters.map(()=>createObjectList());
+  // This solution array of objects replaces all elements in array letters with garbage placeholders.  Took like 2 hours to build though :-/
   console.log(solution);
   console.log("^^ solution");
-  console.log("index 0 = " + solution[0]);
+  console.log(letters);
+  console.log('^^ letters');
   res.render('index',data);
 });
 
