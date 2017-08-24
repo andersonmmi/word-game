@@ -31,7 +31,7 @@ video{
   border-bottom: 5px solid white;
   margin: 10px;
 }
-.letter{
+div{
   text-align: center;
   /*visibility: hidden;*/
 }

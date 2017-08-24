@@ -7,6 +7,13 @@ const fs = require('fs');
 const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
 let guesses = [];
 let letters = [];
+let solution = [];
+// done: create eachLetter class with "match" constructor so that new letter objects can be created and pushed to solution array
+let letter = class letter {
+  constructor(match) {
+    this.match = match;
+  }
+}
 let secretWord = '';
 
 app.set('port', process.env.PORT || 3000);
@@ -32,15 +39,21 @@ app.get('/',function(req, res){
   req.session.word = word;
   console.clear();
   letters = word.split('');
+  solution = letters;
   req.session.letters = letters;
+  req.session.solution = solution;
   console.log(req.session.word);
   console.log("^^ req.session.word");
   console.log(req.session.letters);
   console.log("^^ req.session.letters");
   req.session.guesses = [];
   secretWord = word;
+  solution = letters.map(()=> new letter('a'));
+  console.log(solution);
+  console.log("^^ solution");
+  console.log("index 0 = " + solution[0]);
   res.render('index',{
-    letters : letters,
+    solution : solution,
     word : word,
     guesses : guesses
   });
@@ -57,11 +70,14 @@ app.post('/',function(req,res,next){
   console.log("^^ req.session.guesses");
   // done: log "success" if session.letters contains body.guess
   req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
-  // TODO: if success, show letter; else end
-  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
+  // TODO: if success, show letter; else log solution
+  req.session.letters.indexOf(req.body.guess[0][0]) > -1
+  // TODO: make each letter.match = 'b'
+  ? solution = solution.map(()=> new letter('b'))
+  : console.log(solution);
   //render page anew
   res.render('index',{
-    letters : letters,
+    solution : solution,
     word : secretWord,
     guesses : guesses
   });

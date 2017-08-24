@@ -11,15 +11,17 @@
       <source src="http://www.piedpiper.com/app/themes/pied-piper/dist/images/video-bg.mp4" type="video/mp4" />
     </video>
     <div class="play_board">
-      {{#letters}}
+      {{#solution}}
       <span class="riddle">
         <!-- TODO: begin conditional mustaching for "isMatch" and "isNotMatch" -->
-        <div class="letter"></div>
-
-        <div class="match"></div>
-
+        {{#letter}}
+          <div class="match">!</div>
+        {{/letter}}
+        {{^letter}}
+          <div class="blank">-</div>
+        {{/letter}}
       </span>
-      {{/letters}}({{word}})
+      {{/solution}}({{word}})
     </div>
     <form class="guess" action="/" method="post">
       <input type="text" name="guess" value="" maxlength="1" autofocus>
