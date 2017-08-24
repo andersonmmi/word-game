@@ -55,9 +55,8 @@ app.post('/',function(req,res,next){
   req.session.guesses.push(req.body.guess[0][0]);
   console.log(req.session.guesses);
   console.log("^^ req.session.guesses");
-  // TODO: log "success" if session.letters contains body.guess
-  console.log(req.session.letters.indexOf(req.body.guess[0][0]));
-  console.log("success")
+  // done: log "success" if session.letters contains body.guess
+  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
   res.render('index',{
     letters : letters,
     word : secretWord,
