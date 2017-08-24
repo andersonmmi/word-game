@@ -15,10 +15,10 @@
       <span class="riddle">
         <!-- TODO: begin conditional mustaching for "isMatch" and "isNotMatch" -->
         {{#letter}}
-          <div class="match">!</div>
+          <div class="match">{{letter}}</div>
         {{/letter}}
         {{^letter}}
-          <div class="blank">-</div>
+          <div class="blank"></div>
         {{/letter}}
       </span>
       {{/solution}}({{word}})

@@ -15,6 +15,7 @@ let letter = class letter {
   }
 }
 let secretWord = '';
+const data = require('./data.js')
 
 app.set('port', process.env.PORT || 3000);
 app.engine('mustache',mustache());
@@ -52,11 +53,7 @@ app.get('/',function(req, res){
   console.log(solution);
   console.log("^^ solution");
   console.log("index 0 = " + solution[0]);
-  res.render('index',{
-    solution : solution,
-    word : word,
-    guesses : guesses
-  });
+  res.render('index',data);
 });
 
 // done: create app.post that pushes letters from guess form
@@ -78,6 +75,7 @@ app.post('/',function(req,res,next){
   //render page anew
   res.render('index',{
     solution : solution,
+    letter: letter,
     word : secretWord,
     guesses : guesses
   });
