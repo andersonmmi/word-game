@@ -28,7 +28,7 @@ app.use(session({
 
 app.get('/',function(req, res){
   let word = words[Math.floor(Math.random() * words.length)];
-  // TODO: can I get spread to create an array or one letter strings?
+  // done: used .split to create an array of one letter strings
   req.session.word = word;
   console.clear();
   letters = word.split('');
@@ -37,6 +37,7 @@ app.get('/',function(req, res){
   console.log("^^ req.session.word");
   console.log(req.session.letters);
   console.log("^^ req.session.letters");
+  req.session.guesses = [];
   secretWord = word;
   res.render('index',{
     letters : letters,
@@ -45,10 +46,13 @@ app.get('/',function(req, res){
   });
 });
 
-// TODO: create app.post that pushes letters from guess form
+// done: create app.post that pushes letters from guess form
 app.post('/',function(req,res,next){
   guesses.push(req.body.guess);
   console.log(req.body.guess);
+  req.session.guesses.push(req.body.guess);
+  console.log(req.session.guesses);
+  console.log("^^ req.session.guesses");
   res.render('index',{
     letters : letters,
     word : secretWord,
