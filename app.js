@@ -83,15 +83,14 @@ app.post('/',function(req,res,next){
   console.log("^^ req.session.guesses");
   // done: log "--success" if session.letters contains body.guess
   console.log(req.session.letters + ' -- ' + req.body.guess);
-  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("--success") : console.log("failure");
-  // TODO: if success, show letter; else log solution
-  req.session.letters.indexOf(req.body.guess[0][0]) > -1
-  // TODO: make each letter.match = true
-  ? solution[req.session.letters.indexOf(req.body.guess[0][0])].match = true
-  : console.log(solution);
+  let indexOf = req.session.letters.indexOf(req.body.guess[0][0]);
+  console.log("indexOf = " + indexOf);
+  console.log(req.session.letters.length);
+  console.log(req.body.guess[0][0] + " === " + solution[0].letter);
+  // done: make each letter letter match if it has been guessed
+  for (i=0;i<req.session.letters.length;i++){req.body.guess[0][0] === solution[i].letter ? solution[i].match = true : solution[i].match = false};
   console.log(solution);
   console.log("^^ solution");
-  console.log(solution.every());
   //render page anew
   // done: replace data with key value pairs
   res.render('index',
