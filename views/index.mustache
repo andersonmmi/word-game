@@ -14,12 +14,12 @@
       {{#solution}}
       <span class="riddle">
         <!-- TODO: begin conditional mustaching for "isMatch" and "isNotMatch" -->
-        {{#letter}}
+        {{#match}}
           <div class="match">{{letter}}</div>
-        {{/letter}}
-        {{^letter}}
+        {{/match}}
+        {{^match}}
           <div class="blank"></div>
-        {{/letter}}
+        {{/match}}
       </span>
       {{/solution}}({{word}})
     </div>

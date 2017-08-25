@@ -13,6 +13,7 @@ let extraSolutionArray = [];
 let myObj = class Object {
   constructor(letter) {
     this.letter = letter;
+    this.match = false;
   }
 }
 let secretWord = '';
@@ -81,16 +82,17 @@ app.post('/',function(req,res,next){
   console.log(req.session.guesses);
   console.log("^^ req.session.guesses");
   // done: log "--success" if session.letters contains body.guess
-  console.log(req.session.letters + ' ' + req.body.guess);
+  console.log(req.session.letters + ' -- ' + req.body.guess);
   req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("--success") : console.log("failure");
   // TODO: if success, show letter; else log solution
   req.session.letters.indexOf(req.body.guess[0][0]) > -1
   // TODO: make each letter.match = 'b'
   ? solution = solution.map(()=> new myObj('b'))
   : console.log(solution);
+  console.log(solution);
   console.log("^^ solution");
   //render page anew
-  // TODO: replace data with key value pairs
+  // done: replace data with key value pairs
   res.render('index',
     // data
     {
