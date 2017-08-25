@@ -61,7 +61,14 @@ app.get('/',function(req, res){
   console.log("^^ solution");
   console.log(letters);
   console.log('^^ letters');
-  res.render('index',data);
+  // done: replace data.js with corresponding key value pairs
+  res.render('index',
+    // data
+    {
+      word: word,
+      solution: solution
+    }
+  );
 });
 
 // done: create app.post that pushes letters from guess form
