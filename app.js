@@ -86,11 +86,12 @@ app.post('/',function(req,res,next){
   req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("--success") : console.log("failure");
   // TODO: if success, show letter; else log solution
   req.session.letters.indexOf(req.body.guess[0][0]) > -1
-  // TODO: make each letter.match = 'b'
-  ? solution = solution.map(()=> new myObj('b'))
+  // TODO: make each letter.match = true
+  ? solution[req.session.letters.indexOf(req.body.guess[0][0])].match = true
   : console.log(solution);
   console.log(solution);
   console.log("^^ solution");
+  console.log(solution.every());
   //render page anew
   // done: replace data with key value pairs
   res.render('index',
