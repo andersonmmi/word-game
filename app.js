@@ -90,7 +90,15 @@ app.post('/',function(req,res,next){
   : console.log(solution);
   console.log("^^ solution");
   //render page anew
-  res.render('index',data);
+  // TODO: replace data with key value pairs
+  res.render('index',
+    // data
+    {
+      word: req.session.word,
+      solution: solution,
+      guesses: guesses
+    }
+  );
   next();
 });
 
