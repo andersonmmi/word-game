@@ -88,7 +88,11 @@ app.post('/',function(req,res,next){
   console.log(req.session.letters.length);
   console.log(req.body.guess[0][0] + " === " + solution[0].letter);
   // done: make each letter letter match if it has been guessed
-  for (i=0;i<req.session.letters.length;i++){req.body.guess[0][0] === solution[i].letter ? solution[i].match = true : solution[i].match = false};
+  for (i=0;i<req.session.letters.length;i++){
+    if (req.body.guess[0][0] === solution[i].letter) {
+    solution[i].match = true
+    }
+  }
   console.log(solution);
   console.log("^^ solution");
   //render page anew
