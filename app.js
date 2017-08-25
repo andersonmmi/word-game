@@ -44,7 +44,7 @@ app.get('/',function(req, res){
   letters = word.split('');
   solution = word.split('');
   extraSolutionArray = word.split('')
-  req.session.letters = letters;
+  req.session.letters = extraSolutionArray;
   req.session.solution = solution;
   console.log(req.session.word);
   console.log("^^ req.session.word");
@@ -73,20 +73,17 @@ app.post('/',function(req,res,next){
   req.session.guesses.push(req.body.guess[0][0]);
   console.log(req.session.guesses);
   console.log("^^ req.session.guesses");
-  // done: log "success" if session.letters contains body.guess
-  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("success") : console.log("failure");
+  // done: log "--success" if session.letters contains body.guess
+  console.log(req.session.letters + ' ' + req.body.guess);
+  req.session.letters.indexOf(req.body.guess[0][0]) > -1 ? console.log("--success") : console.log("failure");
   // TODO: if success, show letter; else log solution
   req.session.letters.indexOf(req.body.guess[0][0]) > -1
   // TODO: make each letter.match = 'b'
-  ? solution = solution.map(()=> new letter('b'))
+  ? solution = solution.map(()=> new myObj('b'))
   : console.log(solution);
+  console.log("^^ solution");
   //render page anew
-  res.render('index',{
-    solution : solution,
-    letter: letter,
-    word : secretWord,
-    guesses : guesses
-  });
+  res.render('index',data);
   next();
 });
 
